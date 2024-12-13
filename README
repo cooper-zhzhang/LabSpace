@@ -1,0 +1,3 @@
+用于构建 中间件/框架的使用和测试
+例如 redis集群 redis主从 redis哨兵
+mysql 主从 集群
