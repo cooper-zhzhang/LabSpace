@@ -1,0 +1,55 @@
+version: "3"
+services:
+  mariadb_master:
+    image: mariadb:10.4
+    container_name: mariadb_master-10.4
+    ports:
+      - "3307:3306"
+    restart: always
+    networks:
+      mynetwork:
+        ipv4_address: 172.20.0.7
+    environment:
+      - MARIADB_ROOT_PASSWORD=123456
+    volumes:
+      - /home/we/LabSpace/mariadb_m_s/master/conf:/etc/mysql/conf.d
+      - /home/we/LabSpace/mariadb_m_s/master/data:/var/lib/mysql
+      - /home/we/LabSpace/mariadb_m_s/master/log:/var/log/mysql
+  mariadb_node_1:
+    image: mariadb:10.4
+    container_name: mariadb_node_1-10.4
+    ports:
+      - "3308:3306"
+    restart: always
+    networks:
+      mynetwork:
+        ipv4_address: 172.20.0.8
+    environment:
+      - MARIADB_ROOT_PASSWORD=123456
+    volumes:
+      - /home/we/LabSpace/mariadb_m_s/slave_1/conf:/etc/mysql/conf.d
+      - /home/we/LabSpace/mariadb_m_s/slave_1/data:/var/lib/mysql
+      - /home/we/LabSpace/mariadb_m_s/slave_1/log:/var/log/mysql
+  mariadb_node_2:
+    image: mariadb:10.4
+    container_name: mariadb_node_2-10.4
+    ports:
+      - "3309:3306"
+    restart: always
+    networks:
+      mynetwork:
+        ipv4_address: 172.20.0.9
+    environment:
+      - MARIADB_ROOT_PASSWORD=123456
+    volumes:
+      - /home/we/LabSpace/mariadb_m_s/slave_2/conf:/etc/mysql/conf.d
+      - /home/we/LabSpace/mariadb_m_s/slave_2/data:/var/lib/mysql
+      - /home/we/LabSpace/mariadb_m_s/slave_2/log:/var/log/mysql
+
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24

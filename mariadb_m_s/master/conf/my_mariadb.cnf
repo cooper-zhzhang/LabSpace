@@ -1,0 +1,25 @@
+[mysqld]
+server-id=1
+port=3306
+
+#basedir=/usr/local/mysql
+#tmpdir=/tmp
+datadir=/var/lib/mysql
+
+# 查询日志，默认在 /var/lib/mysql 目录下
+#general_log=1
+#general_log_file=mysql_general-1.log
+
+# 二进制日志，默认在 /var/lib/mysql 目录下
+log_bin=mysql_binlog-1
+#binlog_format=STATEMENT
+binlog_format=ROW
+##MIXED
+
+# 慢查询日志，默认在 /var/log/mysql 目录下
+#slow_query_log=1
+#long_query_time=1
+#slow_query_log_file=mysql_slow_query-1.log
+
+# 错误日志，指定到 /var/log/mysql 目录
+log_error=/var/log/mysql/mysql_err-1.log

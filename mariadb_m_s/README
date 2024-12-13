@@ -1,0 +1,15 @@
+一主两备数据库。
+3307--> 3308/3309
+https://www.cnblogs.com/tkuang/p/16740619.html
+
+docker exec -it  name /bin/bash
+
+change master to master_host='172.20.0.7', master_port=3306, master_user='node_copy', master_password='123456', master_log_file='mysql_binlog-1.000011', master_log_pos=347;
+
+
+固定好了ip
+
+
+解析row格式的binlog
+sudo mysqlbinlog -v --base64-output=decode-rows  mysql_binlog-1.000012
+
