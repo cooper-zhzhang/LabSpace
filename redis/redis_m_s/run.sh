@@ -1,6 +1,12 @@
+cd master
 redis-server 6380.conf &
-redis-server slave_81/6381.conf &
-redis-server slave_82/6382.conf &
+cd -
+cd slave_81
+redis-server 6381.conf &
+cd -
+cd slave_81
+redis-server 6382.conf &
+cd -
 
 
 
