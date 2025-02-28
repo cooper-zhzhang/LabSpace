@@ -4,7 +4,7 @@ cd -
 cd slave_81
 redis-server 6381.conf &
 cd -
-cd slave_81
+cd slave_82
 redis-server 6382.conf &
 cd -
 
